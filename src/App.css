@@ -28,6 +28,16 @@
     color: #61dafb;
 }
 
+.App-column {
+    display: flex;
+    text-align: start;
+    flex-direction: column;
+}
+
+.list ul li {
+    font-size: 5px;
+}
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
