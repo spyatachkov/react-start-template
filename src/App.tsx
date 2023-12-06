@@ -27,7 +27,7 @@ function App() {
               <li>Docker</li>
             </ul>
 
-            <b>"Владею" (пробовал) следующие технологии</b>
+            <b>Владею (пробовал) следующие технологии</b>
             <ul className='list'>
               <li>PHP</li>
               <li>JS (JQuery)</li>
