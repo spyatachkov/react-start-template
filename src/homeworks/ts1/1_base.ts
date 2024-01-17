@@ -32,20 +32,24 @@ export const getTransformFromCss = (transformCssString: string): Coordinates => 
   };
 };
 
-export const getColorContrastValue = ([red, green, blue]: number[]): number =>
+type ColorRGBTuple = [number, number, number];
+
+export const getColorContrastValue = ([red, green, blue]: ColorRGBTuple): number =>
   // http://www.w3.org/TR/AERT#color-contrast
   Math.round((red * 299 + green * 587 + blue * 114) / 1000);
 
-export const getContrastType = (contrastValue: number): string => (contrastValue > 125 ? 'black' : 'white');
+
+type ContrastType = 'black' | 'white'  
+export const getContrastType = (contrastValue: number): ContrastType => (contrastValue > 125 ? 'black' : 'white');
 
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
 export const longColorRegExp = /^#[0-9a-f]{6}$/i;
 
-export const checkColor = (color: string): void => {
+export const checkColor = (color: string): void | never => {
   if (!longColorRegExp.test(color) && !shortColorRegExp.test(color)) throw new Error(`invalid hex color: ${color}`);
 };
 
-export const hex2rgb = (color: string) => {
+export const hex2rgb = (color: string): ColorRGBTuple => {
   checkColor(color);
   if (shortColorRegExp.test(color)) {
     const red = parseInt(color.substring(1, 2), 16);
@@ -67,15 +71,14 @@ export const getNumberedArray = (arr: number[]): StringArray[] => arr.map((value
 export const toStringArray = (arr: StringArray[]): string[] => arr.map(({ value, number }) => `${value}_${number}`);
 
 type Customer = {
-  id?: number;
+  id: number;
   name: string;
   age: number;
   isSubscribed: boolean;
 }
 
-type CustomerHashMap = {
-  [id: number]: Customer
-}
+type CustomerHashMap = Record<number, Omit<Customer, 'id'>>;
+
 export const transformCustomers = (customers: Customer[]) => {
   return customers.reduce((acc: CustomerHashMap, customer: Customer) => {
     acc[customer.id] = { name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed };
