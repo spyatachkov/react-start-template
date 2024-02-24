@@ -77,7 +77,7 @@ type Customer = {
   isSubscribed: boolean;
 }
 
-type CustomerHashMap = Record<number, Omit<Customer, 'id'>>;
+type CustomerHashMap = Record<Customer['id'], Omit<Customer, 'id'>>
 
 export const transformCustomers = (customers: Customer[]) => {
   return customers.reduce((acc: CustomerHashMap, customer: Customer) => {
