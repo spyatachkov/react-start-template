@@ -1,0 +1,36 @@
+.operation-preview-card-wrapper {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 200px;
+  width: 300px;
+  background-color: rgba(240, 240, 240, 0.604);
+  border-radius: 16px;
+  display: flex;
+  border: px solid #0000001a;
+  padding: 25px 25px;
+}
+
+.description-text {
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.amount {
+  color: black;
+  font-weight: 1000;
+  font-size: 32px;
+}
+
+.title {
+  color: #b4b4b7;
+  font-size: 26px;
+}
+
+.category {
+  color: #888282;
+}
+
+.description-text {
+  color: #7e7e7e;
+}
