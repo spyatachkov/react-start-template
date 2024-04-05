@@ -1,0 +1,20 @@
+.modal-window {
+  height: 100vh;
+  background-color: rgba(199, 188, 188, 0.433);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-window__content {
+  padding: 15px;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  background-color: white;
+}
+
+.modal-window__header {
+  display: flex;
+  justify-content: space-between;
+}
