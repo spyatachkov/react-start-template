@@ -1,9 +1,10 @@
-import React, { ReactNode } from 'react';
-import './modal.css';
+import React, { ReactNode, useEffect, useState } from 'react';
+import './modal.scss';
 
-interface ModalComponentProps {
+export interface ModalComponentProps {
   visible: boolean;
-  children: ReactNode;
+  children?: ReactNode;
+  onClose?: () => void;
 }
 
 /**
@@ -13,17 +14,34 @@ interface ModalComponentProps {
  * Обладает проспом visible и children, для них должны быть реализовано управление в сторибук.
  * Логики монтирования в body пока не нужно реализовывать.
  */
-export function ModalComponent({ visible, children }: ModalComponentProps) {
+export function ModalComponent({ visible, onClose, children }: ModalComponentProps) {
+  const [isVisible, setVisible] = useState(visible);
+
+  useEffect(() => {
+    setVisible(visible);
+  }, [visible]);
+
+  const handleClose = () => {
+    setVisible(false);
+    onClose();
+  };
+
   return (
     <>
-      {visible && (
-        <div className="modal-window">
-          <div className="modal-window__content">
+      {isVisible && (
+        <div className="modal-window" onClick={handleClose}>
+          <div
+            className="modal-window__content"
+            role="dialog"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
             <div className="modal-window__header">
               <span>
                 <strong>Header</strong>
               </span>
-              <button>X</button>
+              <button onClick={handleClose}>X</button>
             </div>
             My modal window with {children}
           </div>
