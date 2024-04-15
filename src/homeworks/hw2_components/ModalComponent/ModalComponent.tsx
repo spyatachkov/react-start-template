@@ -15,21 +15,10 @@ export interface ModalComponentProps {
  * Логики монтирования в body пока не нужно реализовывать.
  */
 export function ModalComponent({ visible, onClose, children }: ModalComponentProps) {
-  const [isVisible, setVisible] = useState(visible);
-
-  useEffect(() => {
-    setVisible(visible);
-  }, [visible]);
-
-  const handleClose = () => {
-    setVisible(false);
-    onClose();
-  };
-
   return (
     <>
-      {isVisible && (
-        <div className="modal-window" onClick={handleClose}>
+      {visible && (
+        <div className="modal-window" onClick={onClose}>
           <div
             className="modal-window__content"
             role="dialog"
@@ -41,7 +30,7 @@ export function ModalComponent({ visible, onClose, children }: ModalComponentPro
               <span>
                 <strong>Header</strong>
               </span>
-              <button onClick={handleClose}>X</button>
+              <button onClick={onClose}>X</button>
             </div>
             My modal window with {children}
           </div>

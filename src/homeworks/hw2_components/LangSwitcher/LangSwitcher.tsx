@@ -12,14 +12,8 @@ export const LangSwitcher: FC<ThemeSwitcherProps> = ({ className }) => {
   const { i18n } = useTranslation();
   const lang = (i18n.language as Locale) === Locale.ru ? Locale.en : Locale.ru;
   return (
-    <>
-      <button
-        type="button"
-        className={cn(s.root, className, 'setting-button')}
-        onClick={() => i18n.changeLanguage(lang)}
-      >
-        {lang}
-      </button>
-    </>
+    <button type="button" className={cn(s.root, className, 'setting-button')} onClick={() => i18n.changeLanguage(lang)}>
+      {lang}
+    </button>
   );
 };
