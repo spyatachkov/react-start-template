@@ -1,8 +1,8 @@
 .operation-preview-card-wrapper {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   height: 200px;
-  width: 300px;
-  background-color: rgba(240, 240, 240, 0.604);
+  width: 100%;
+  background-color: rgba(212, 207, 207, 0.604);
   border-radius: 16px;
   display: flex;
   border: px solid #0000001a;
