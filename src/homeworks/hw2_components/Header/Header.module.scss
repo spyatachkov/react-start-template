@@ -1,0 +1,11 @@
+@import '../../../styles/common';
+
+.root {
+  @include theme(background-color, mainBg);
+  @include theme(box-shadow, boxShadow);
+  @include theme(color, text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
