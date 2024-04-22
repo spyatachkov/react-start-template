@@ -19,9 +19,9 @@ const transformRegexp =
   /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
 
 type Coordinates = {
-  x: number,
-  y: number,
-}
+  x: number;
+  y: number;
+};
 
 export const getTransformFromCss = (transformCssString: string): Coordinates => {
   const data = transformCssString.match(transformRegexp);
@@ -38,8 +38,7 @@ export const getColorContrastValue = ([red, green, blue]: ColorRGBTuple): number
   // http://www.w3.org/TR/AERT#color-contrast
   Math.round((red * 299 + green * 587 + blue * 114) / 1000);
 
-
-type ContrastType = 'black' | 'white'  
+type ContrastType = 'black' | 'white';
 export const getContrastType = (contrastValue: number): ContrastType => (contrastValue > 125 ? 'black' : 'white');
 
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
@@ -66,7 +65,7 @@ export const hex2rgb = (color: string): ColorRGBTuple => {
 type StringArray = {
   value: number;
   number: number;
-}
+};
 export const getNumberedArray = (arr: number[]): StringArray[] => arr.map((value, number) => ({ value, number }));
 export const toStringArray = (arr: StringArray[]): string[] => arr.map(({ value, number }) => `${value}_${number}`);
 
@@ -75,9 +74,9 @@ type Customer = {
   name: string;
   age: number;
   isSubscribed: boolean;
-}
+};
 
-type CustomerHashMap = Record<Customer['id'], Omit<Customer, 'id'>>
+type CustomerHashMap = Record<Customer['id'], Omit<Customer, 'id'>>;
 
 export const transformCustomers = (customers: Customer[]) => {
   return customers.reduce((acc: CustomerHashMap, customer: Customer) => {

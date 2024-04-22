@@ -4,6 +4,7 @@ import { sum } from './sum';
 import './button.css';
 
 interface ButtonProps {
+  onClick: () => void;
   primary?: boolean;
   backgroundColor?: string | null;
   size?: string;
@@ -13,18 +14,14 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 
-export const Button: FC<ButtonProps> = ({ primary, backgroundColor, size, label, ...props }) => {
+export const Button: FC<ButtonProps> = ({ onClick, primary, backgroundColor, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-
-  const onClick = () => {
-    sum(4, 5);
-  };
 
   return (
     <button
       type="button"
       className={cn('storybook-button', `storybook-button--${size}`, mode)}
-      style={{ backgroundColor: backgroundColor || 'green' }}
+      style={{ backgroundColor: backgroundColor || 'green', margin: '15px 15px' }}
       onClick={onClick}
       {...props}
     >
